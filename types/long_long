@@ -1,0 +1,77 @@
+// -*- C++ -*-
+// This file is a part of the IncludeOS unikernel - www.includeos.org
+//
+// Copyright 2017 Oslo and Akershus University College of Applied Sciences
+// and Alfred Bratterud
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#pragma once
+#ifndef INCLUDEOS_LONG_LONG_HPP
+#define INCLUDEOS_LONG_LONG_HPP
+
+/**
+ * This type is used to represent a named long long
+ *
+ * @tparam T
+ *   A type(tag) to instantiate a specialized named long long
+ */
+template<typename T>
+struct long_long_t final {
+  /**
+   * Constructor
+   *
+   * @param value
+   *    The value for this type to represent
+   */
+  constexpr explicit long_long_t(const long long value) noexcept
+    : value_{value}
+  {}
+
+  /**
+   * Operator to coerce this type to a long long
+   */
+  constexpr operator long long() const noexcept
+  { return value_; }
+
+  const long long value_; //< The value this type represent
+}; //< struct long_long_t
+
+/**
+ * This type is used to represent a named unsigned long long
+ *
+ * @tparam T
+ *   A type(tag) to instantiate a specialized named unsigned long long
+ */
+template<typename T>
+struct ulong_long_t final {
+  /**
+   * Constructor
+   *
+   * @param value
+   *    The value for this type to represent
+   */
+  constexpr explicit ulong_long_t(const unsigned long long value) noexcept
+    : value_{value}
+  {}
+
+  /**
+   * Operator to coerce this type to an unsigned long long
+   */
+  constexpr operator unsigned long long() const noexcept
+  { return value_; }
+
+  const unsigned long long value_; //< The value this type represent
+}; //< struct ulong_long_t
+
+#endif //< INCLUDEOS_LONG_LONG_HPP
